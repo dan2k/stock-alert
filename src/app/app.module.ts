@@ -9,6 +9,7 @@ import { ListAlertComponent } from './list-alert/list-alert.component';
 import { BorrowComponent } from './borrow/borrow.component';
 import { SetSpareComponent } from './set-spare/set-spare.component';
 import { BorrowDetailComponent } from './borrow-detail/borrow-detail.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { BorrowDetailComponent } from './borrow-detail/borrow-detail.component';
     BorrowComponent,
     SetSpareComponent,
     BorrowDetailComponent,
+    NavbarComponent,
 
   ],
   imports: [
