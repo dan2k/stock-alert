@@ -1,0 +1,10 @@
+{
+  "/stock-alert":{
+    "target":"http://www.controldata.co.th/mpsicc/iccServer/stock-alert",
+    "secure": true,
+    "pathRewrite": {
+      "^/stock-alert": ""
+    },
+      "changeOrigin": true
+    }
+}

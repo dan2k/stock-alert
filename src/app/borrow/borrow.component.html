@@ -1,0 +1,25 @@
+<div class="alert alert-danger mt-5" role="alert" style="margin-bottom: 0;">
+    <h1 class="pull-right">รายการเบิกยืมที่ถึงกำหนดคืน</h1>
+  </div>
+<div class="table-responsive">
+    <table class="table table-dark table-bordered table-hover table-striped">
+      <thead class="thead-light">
+        <tr>
+          <th>ลำดับที่</th>
+          <th>docno</th>
+          <th>ผู้เบิก</th>
+          <th>วันที่เบิก</th>
+          <th>วันที่ครบกำหนด</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of data ;let i=index;" (click)="detail(d)">
+          <td>{{i+1}}</td>
+          <td>{{d?.doc_no}}</td>
+          <td>{{d?.thiname}}</td>
+          <td>{{d?.draw_date1}}</td>
+          <td>{{d?.return_expect1}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

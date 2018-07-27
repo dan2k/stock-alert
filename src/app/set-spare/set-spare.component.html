@@ -1,0 +1,47 @@
+<div class="alert alert-danger mt-5" role="alert" style="margin-bottom: 0;">
+    <h1 class="pull-right">รายการที่ยังไม่ได้จัดอุปกรณ์</h1>
+  </div>
+<div class="table-responsive">
+  <table class="table table-dark table-bordered table-hover table-striped">
+    <thead class="thead-light">
+      <tr>
+        <th>ลำดับที่</th>
+        <th>pno</th>
+        <th>sno</th>
+        <th>ตู้</th>
+        <th>ชั้น</th>
+        <th>ช่อง</th>
+        <th>กล่อง</th>
+        <th>::</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of data ;let i=index;">
+        <td>{{i+1}}</td>
+        <td>{{d?.pno}}</td>
+        <td>{{d?.sno}}</td>
+        <td>
+          <select class="form-control form-control-sm" #a1>
+            <option *ngFor="let a1 of cabinet" [value]="a1.st_name">{{a1.st_name}}</option>
+          </select>
+        </td>
+        <td>
+          <select class="form-control form-control-sm" #a2>
+            <option *ngFor="let a2 of shelf" [value]="a2.st_name">{{a2.st_name}}</option>
+          </select>
+        </td>
+        <td>
+          <select class="form-control form-control-sm" #a3>
+            <option *ngFor="let a3 of channel" [value]="a3.st_name">{{a3.st_name}}</option>
+          </select>
+        </td>
+        <td>
+          <select class="form-control form-control-sm" #a4>
+            <option *ngFor="let a4 of box" [value]="a4.st_name">{{a4.st_name}}</option>
+          </select>
+        </td>
+        <td><button class="btn-primary btn-sm" (click)="save(d,a1.value,a2.value,a3.value,a4.value)">บันทึก</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
