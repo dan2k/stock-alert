@@ -40,6 +40,7 @@ export class ListAlertComponent implements OnInit {
     switch (parseInt(list.type)) {
       case 1: r = 'borrow'; break; // เบิกยืม
       case 2: r = 'setspare'; break; // จัด set
+      case 3: r = 'sendrepair'; break; // บันทึกเอกสารส่งซ่อม
     }
     console.log(r);
     // this.router.navigate([r], navigationExtras);
