@@ -1,6 +1,6 @@
 <div class="alert alert-danger mt-5" role="alert" style="margin-bottom: 0;">
-    <h1 class="pull-right">รายการที่ยังไม่ได้จัดอุปกรณ์</h1>
-  </div>
+  <h1 class="pull-right">รายการที่ยังไม่ได้จัดอุปกรณ์</h1>
+</div>
 <div class="table-responsive">
   <table class="table table-dark table-bordered table-hover table-striped">
     <thead class="thead-light">
@@ -40,7 +40,13 @@
             <option *ngFor="let a4 of box" [value]="a4.st_name">{{a4.st_name}}</option>
           </select>
         </td>
-        <td><button class="btn-primary btn-sm" (click)="save(d,a1.value,a2.value,a3.value,a4.value)">บันทึก</button></td>
+        <td>
+          <button class="btn-success btn-sm" (click)="save(d,a1.value,a2.value,a3.value,a4.value)">
+            <i class="material-icons">
+              save
+            </i>
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>

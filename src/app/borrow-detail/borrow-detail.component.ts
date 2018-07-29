@@ -39,6 +39,9 @@ export class BorrowDetailComponent implements OnInit {
     });
   }
   async sendback(data: any, type: any, tagno: any, nsno: any, symptom: any) {
+    if (!confirm('คุณต้องการส่งคืนหรือไม่')) {
+      return false;
+    }
     if (type.value === '2') {
       if (nsno.value.trim() === '') {
         alert('กรุณาระบุ serial อุปกรณ์ใหม่');

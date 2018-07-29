@@ -44,8 +44,14 @@ export class SendrepairDetailComponent implements OnInit {
     });
   }
   setImg(event) {
-    console.log(event.target.files[0]);
+    // console.log(event.target.files[0]);
     if (event.target.files && event.target.files[0]) {
+      let pattern = /image-*/;
+      if (!event.target.files[0].type.match(pattern)) {
+        this.toast.error('ไม่ใช่รูปภาพกรุณา upload รูปภาพเท่านั้น', null, { timeOut: 3000 });
+        this.imgUrl = '';
+        return false;
+      }
       let reader = new FileReader();
       reader.onload = (event2: any) => {
         this.imgUrl = event2.target.result;

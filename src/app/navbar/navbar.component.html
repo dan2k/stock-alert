@@ -1,8 +1,30 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="btn btn-outline-success btn-sm my-2 my-sm-0" routerLink=''>Home</a>
+      <!-- <a class="btn btn-outline-success btn-sm my-2 my-sm-0" routerLink=''>
+        <i class="material-icons md-2">
+          home
+        </i>
+      </a> -->
+      <a class="navbar-brand btn btn-outline-warning btn-sm my-2 my-sm-0" routerLink=''>
+        <i class="material-icons">
+            warning
+        </i>
+      </a>
     </div>
   </div>
-  <button class="btn btn-outline-success btn-sm my-2 my-sm-0 float-right" onclick="history.back()">back</button>
+  <a class="btn btn-outline-success btn-sm my-2 my-sm-0 float-right" routerLink='' style="
+  width: 47px;
+">
+    <i class="material-icons md-2">
+      home
+    </i>
+  </a>
+  <button class="btn btn-outline-success btn-sm my-2 my-sm-0 float-right" onclick="history.back()" style="
+  width: 47px;
+">
+    <i class="material-icons">
+      arrow_back_ios
+    </i>
+  </button>
 </nav>
