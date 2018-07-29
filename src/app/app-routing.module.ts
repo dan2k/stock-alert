@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'setspare', component: SetSpareComponent },
   { path: 'sendrepair', component: SendrepairComponent },
   { path: 'sendrepair-detail/:transfer_docno', component: SendrepairDetailComponent},
-  { path: '**', redirectTo: '', pathMatch: 'full'}
+  { path: '**', redirectTo: ''}
 
 ];
 
