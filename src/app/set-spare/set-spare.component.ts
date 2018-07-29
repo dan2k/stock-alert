@@ -35,9 +35,12 @@ export class SetSpareComponent implements OnInit {
           this.data = data.data;
         }
 
-      }else{
-        alert('พบข้อผิดพลาด');
+      } else {
+        // alert('พบข้อผิดพลาด');
+        this.toast.clear(toastref.toastId);
+        this.toast.error(data.msg, null, { disableTimeOut: true });
         console.log(data);
+        return false;
       }
     });
     await this.setspareService.getCabinet().toPromise().then((data: any) => {

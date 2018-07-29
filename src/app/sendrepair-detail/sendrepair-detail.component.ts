@@ -58,10 +58,12 @@ export class SendrepairDetailComponent implements OnInit {
     console.log(transferpic.files[0]);
     if (transferdesc.value === '') {
       alert('กรุณาระบุ รายละเอียดการส่ง');
+      transferdesc.focus();
       return false;
     }
     if (transfernumber.value === '') {
       alert('กรุณาระบุ หมายเลขเอกสารการส่ง');
+      transfernumber.focus();
       return false;
     }
     if (this.imgUrl === '') {
