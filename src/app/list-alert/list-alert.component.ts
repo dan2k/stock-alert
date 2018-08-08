@@ -39,14 +39,14 @@ export class ListAlertComponent implements OnInit {
       }
     });
   }
-  goto(list: any) {
+  gotoPage(type: any) {
     // let navigationExtras: NavigationExtras = {
     //   queryParams: {
     //     data: JSON.stringify(list.data)
     //   }
     // };
-    let r: any;
-    switch (parseInt(list.type)) {
+    let r: any = '';
+    switch (type) {
       case 1:
         r = 'borrow';
         break; // เบิกยืม
