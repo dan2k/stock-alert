@@ -12,6 +12,8 @@ import { BorrowDetailComponent } from './borrow-detail/borrow-detail.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SendrepairComponent } from './sendrepair/sendrepair.component';
 import { SendrepairDetailComponent } from './sendrepair-detail/sendrepair-detail.component';
+import { SendreturnComponent } from './sendreturn/sendreturn.component';
+import { SendreturnDetailComponent } from './sendreturn-detail/sendreturn-detail.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { SendrepairDetailComponent } from './sendrepair-detail/sendrepair-detail
     NavbarComponent,
     SendrepairComponent,
     SendrepairDetailComponent,
+    SendreturnComponent,
+    SendreturnDetailComponent,
 
   ],
   imports: [
