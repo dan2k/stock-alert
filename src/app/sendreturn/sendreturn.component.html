@@ -1,3 +1,28 @@
-<p>
-  sendreturn works!
-</p>
+<div class="alert alert-danger mt-5" role="alert" style="margin-bottom: 0;">
+  <br>
+  <h5 class="pull-right">รายการส่งคืนของซ่อมที่ยังไม่ได้บันทึกเอกสารส่งคืน</h5>
+</div>
+<div class="table-responsive">
+  <table class="table table-dark table-bordered table-hover table-striped">
+    <thead class="thead-light">
+      <tr>
+        <th>ลำดับที่</th>
+        <th>เลขที่ส่งเอกสาร</th>
+        <th>ผู้ส่ง</th>
+        <th>จาก</th>
+        <th>ปลายทาง</th>
+        <th>วันที่ส่ง</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of data ;let i=index;" (click)="detail(d)">
+        <td>{{i+1}}</td>
+        <td>{{d?.transfer_docno}}</td>
+        <td>{{d?.thiname}}</td>
+        <td>{{d?.fstock_name}}</td>
+        <td>{{d?.tstock_name}}</td>
+        <td>{{d?.transfer_date1}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
