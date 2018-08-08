@@ -10,6 +10,8 @@ import { BorrowComponent } from './borrow/borrow.component';
 import { SetSpareComponent } from './set-spare/set-spare.component';
 import { BorrowDetailComponent } from './borrow-detail/borrow-detail.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SendrepairComponent } from './sendrepair/sendrepair.component';
+import { SendrepairDetailComponent } from './sendrepair-detail/sendrepair-detail.component';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     SetSpareComponent,
     BorrowDetailComponent,
     NavbarComponent,
+    SendrepairComponent,
+    SendrepairDetailComponent,
 
   ],
   imports: [

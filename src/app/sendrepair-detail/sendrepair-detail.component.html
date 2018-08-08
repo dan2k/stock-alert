@@ -1,0 +1,66 @@
+<div class="card">
+  <div class="card-header">
+    บันทึกรายละเอียดเอกสารส่งซ่อม
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">เลขที่เอกสารส่งของ:&nbsp;{{transfer_docno}}</h5>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <b>ผู้ส่ง:</b>&nbsp;{{detail?.thiname}}</li>
+      <li class="list-group-item">
+        <b>ส่งจาก:</b>&nbsp;{{detail?.fstock_name}}</li>
+      <li class="list-group-item">
+        <b>ปลายทาง:</b>&nbsp;{{detail?.tstock_name}}</li>
+      <li class="list-group-item">
+        <b>วันที่ส่ง:</b>&nbsp;{{detail?.transfer_date1}}</li>
+    </ul>
+    <fieldset>
+        <legend>บันทึกรายละเอียดการส่ง:</legend>
+      <div class="form-group col-12 col-sm-12 col-md-5 col-lg-3 col-xl-3">
+        <label for="transfer_desc">รายละเอียดการส่ง</label>
+        <input type="text" class="form-control form-control-sm" #transferdesc>
+      </div>
+      <div class="form-group col-12 col-sm-12 col-md-5 col-lg-3 col-xl-3">
+        <label for="transfer_number">เลขที่เอกสาร</label>
+        <input type="text" class="form-control form-control-sm" #transfernumber>
+      </div>
+      <div class="form-group col-12 col-sm-12 col-md-5 col-lg-3 col-xl-3">
+        <label for="transfer_number">เบอร์โทร</label>
+        <input type="text" class="form-control form-control-sm" #transfertel>
+      </div>
+      <div class="form-group col-12 col-sm-12 col-md-5 col-lg-3 col-xl-3">
+        <label for="transfer_pic">รูปภาพ::</label>
+        <input type="file" class="form-control form-control-sm" #transferpic style="display:none;" (change)="setImg($event)">
+        <button class="btn-success btn-sm" (click)="transferpic.click()">upload</button>&nbsp;
+        <button class="btn btn-success btn-sm"(click)="save(transferdesc,transfernumber,transfertel,transferpic)">บันทึก</button>&nbsp;
+        <button class="btn btn-danger btn-sm" (click)="cancel(transferdesc,transfernumber,transfertel,transferpic)">ยกเลิก</button><br>
+      </div>
+      <img [src]='imgUrl'  class="img-fluid rounded mx-auto d-block" [hidden]="imgUrl===''">
+    </fieldset>
+
+
+    <!-- </p> -->
+    <div class="table-responsive">
+      <table class="table table-dark table-bordered table-hover table-striped">
+        <thead class="thead-light">
+          <tr>
+            <th>ลำดับที่</th>
+            <th>pno</th>
+            <th>sno</th>
+            <th>tagno</th>
+            <th>อาการเสีย</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of repairs ;let i=index;">
+            <td>{{i+1}}</td>
+            <td>{{d?.send_pno}}</td>
+            <td>{{d?.send_sno}}</td>
+            <td>{{d?.tag_no}}</td>
+            <td>{{d?.symptom}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

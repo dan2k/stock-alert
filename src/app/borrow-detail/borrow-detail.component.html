@@ -1,58 +1,75 @@
 <div class="card">
-    <div class="card-header">
-      รายละเอียดการเบิก
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">เลขที่เอกสาร:&nbsp; {{detail['docno']}}</h5>
-      <!-- <p class="card-text"> -->
-        <!-- <b>ผู้เบิก:</b>&nbsp;{{detail['thiname']}}<br>
+  <div class="card-header">
+    รายละเอียดการเบิก
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">เลขที่เอกสาร:&nbsp; {{detail['docno']}}</h5>
+    <!-- <p class="card-text"> -->
+    <!-- <b>ผู้เบิก:</b>&nbsp;{{detail['thiname']}}<br>
         <b>วันที่เบิก:</b>&nbsp;{{detail['draw_date']}}<br>
         <b>วันกำหนดส่งคืน:</b>&nbsp;{{detail['return_date']}}<br>
         <b>วัตถุประสงค์การเบิก:</b>&nbsp;{{detail['object']}}<br>
         <b>หมายเหตุ:</b>&nbsp;{{detail['remark']}}<br> -->
-        <ul class="list-group">
-            <li class="list-group-item"> <b>ผู้เบิก:</b>&nbsp;{{detail['thiname']}}</li>
-            <li class="list-group-item"><b>วันที่เบิก:</b>&nbsp;{{detail['draw_date']}}</li>
-            <li class="list-group-item"><b>วันกำหนดส่งคืน:</b>&nbsp;{{detail['return_date']}}</li>
-            <li class="list-group-item"><b>วัตถุประสงค์การเบิก:</b>&nbsp;{{detail['object']}}</li>
-            <li class="list-group-item"><b>หมายเหตุ:</b>&nbsp;{{detail['remark']}}</li>
-        </ul>
-      <!-- </p> -->
-      <div class="table-responsive">
-          <table class="table table-dark table-bordered table-hover table-striped">
-            <thead class="thead-light">
-              <tr>
-                <th>ลำดับที่</th>
-                <th>อุปกรณ์</th>
-                <th>รายละเอียดอุปรกรณ์</th>
-                <th>sno</th>
-                <th>ประเภทการเบิก</th>
-                <th>tagno</th>
-                <th>sno(ใหม่)</th>
-                <th>อาการเสีย</th>
-                <th>::</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let d of equip ;let i=index;" >
-                <td>{{i+1}}</td>
-                <td>{{d?.pno}}</td>
-                <td>{{d?.pno_desc}}</td>
-                <td>{{d?.sno}}</td>
-                <td>
-                  <select class="form-control form-control-sm" #type (change)="setObj(type.value,tagno,nsno,symptom,$event)">
-                    <option value="1">คืนปกติ</option>
-                    <option value="2">คืนปกติเปลี่ยนอุปกรณ์</option>
-                    <option value="3">คืนชำรุด</option>
-                  </select>
-                </td>
-                <td><input type="text" class="form-control form-control-sm" #tagno disabled></td>
-                <td><input type="text" class="form-control form-control-sm" #nsno disabled></td>
-                <td><input type="text" class="form-control form-control-sm" #symptom disabled></td>
-                <td><button class="btn-success btn-sm" (click)="sendback(d,type.value,tagno.value,nsno.value,symptom.value,tagno)">ส่งคืน</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <b>ผู้เบิก:</b>&nbsp;{{detail['thiname']}}</li>
+      <li class="list-group-item">
+        <b>วันที่เบิก:</b>&nbsp;{{detail['draw_date']}}</li>
+      <li class="list-group-item">
+        <b>วันกำหนดส่งคืน:</b>&nbsp;{{detail['return_date']}}</li>
+      <li class="list-group-item">
+        <b>วัตถุประสงค์การเบิก:</b>&nbsp;{{detail['object']}}</li>
+      <li class="list-group-item">
+        <b>หมายเหตุ:</b>&nbsp;{{detail['remark']}}</li>
+    </ul>
+    <!-- </p> -->
+    <div class="table-responsive">
+      <table class="table table-dark table-bordered table-hover table-striped">
+        <thead class="thead-light">
+          <tr>
+            <th>ลำดับที่</th>
+            <th>อุปกรณ์</th>
+            <th>รายละเอียดอุปรกรณ์</th>
+            <th>sno</th>
+            <th>ประเภทการเบิก</th>
+            <th>tagno</th>
+            <th>sno(ใหม่)</th>
+            <th>อาการเสีย</th>
+            <th>::</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of equip ;let i=index;">
+            <td>{{i+1}}</td>
+            <td>{{d?.pno}}</td>
+            <td>{{d?.pno_desc}}</td>
+            <td>{{d?.sno}}</td>
+            <td>
+              <select class="form-control form-control-sm" #type (change)="setObj(type.value,tagno,nsno,symptom,$event)">
+                <option value="1">คืนปกติ</option>
+                <option value="2">คืนปกติเปลี่ยนอุปกรณ์</option>
+                <option value="3">คืนชำรุด</option>
+              </select>
+            </td>
+            <td>
+              <input type="text" class="form-control form-control-sm" #tagno disabled>
+            </td>
+            <td>
+              <input type="text" class="form-control form-control-sm" #nsno disabled>
+            </td>
+            <td>
+              <input type="text" class="form-control form-control-sm" #symptom disabled>
+            </td>
+            <td>
+              <button class="btn-success btn-sm" (click)="sendback(d,type,tagno,nsno,symptom,tagno)">
+                <i class="material-icons">
+                  reply
+                </i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
