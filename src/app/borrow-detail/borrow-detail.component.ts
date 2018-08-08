@@ -39,19 +39,25 @@ export class BorrowDetailComponent implements OnInit {
     });
   }
   async sendback(data: any, type: any, tagno: any, nsno: any, symptom: any) {
-    if (type === '2') {
-      if (nsno.trim() === '') {
+    if (!confirm('คุณต้องการส่งคืนหรือไม่')) {
+      return false;
+    }
+    if (type.value === '2') {
+      if (nsno.value.trim() === '') {
         alert('กรุณาระบุ serial อุปกรณ์ใหม่');
+        nsno.focus();
         return false;
       }
     }
-    if (type === '3') {
-      if (tagno.trim() === '') {
+    if (type.value === '3') {
+      if (tagno.value.trim() === '') {
         alert('กรุณาระบุ tagno อุปกรณ์เสีย');
+        tagno.focus();
         return false;
       }
-      if (symptom.trim() === '') {
+      if (symptom.value.trim() === '') {
         alert('กรุณาระบุ อาการเสีย อุปกรณ์เสีย');
+        symptom.focus();
         return false;
       }
       let cktag = '0';
