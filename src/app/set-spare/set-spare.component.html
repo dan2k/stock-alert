@@ -23,21 +23,25 @@
         <td>{{d?.sno}}</td>
         <td>
           <select class="form-control form-control-sm" #a1>
+            <option value='' > - </option>
             <option *ngFor="let a1 of cabinet" [value]="a1.st_name">{{a1.st_name}}</option>
           </select>
         </td>
         <td>
           <select class="form-control form-control-sm" #a2>
+              <option value='' > - </option>
             <option *ngFor="let a2 of shelf" [value]="a2.st_name">{{a2.st_name}}</option>
           </select>
         </td>
         <td>
           <select class="form-control form-control-sm" #a3>
+              <option value='' > - </option>
             <option *ngFor="let a3 of channel" [value]="a3.st_name">{{a3.st_name}}</option>
           </select>
         </td>
         <td>
           <select class="form-control form-control-sm" #a4>
+              <option value='' > - </option>
             <option *ngFor="let a4 of box" [value]="a4.st_name">{{a4.st_name}}</option>
           </select>
         </td>

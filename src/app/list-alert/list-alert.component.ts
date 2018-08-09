@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { AlertService } from "../alert.service";
-import { Router, NavigationExtras } from "@angular/router";
-import { ToastrService } from "ngx-toastr";
+import { Component, OnInit } from '@angular/core';
+import { AlertService } from '../alert.service';
+import { Router, NavigationExtras } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: "app-list-alert",
-  templateUrl: "./list-alert.component.html",
-  styleUrls: ["./list-alert.component.scss"]
+  selector: 'app-list-alert',
+  templateUrl: './list-alert.component.html',
+  styleUrls: ['./list-alert.component.scss']
 })
 export class ListAlertComponent implements OnInit {
   list: any;
@@ -19,7 +19,7 @@ export class ListAlertComponent implements OnInit {
   ngOnInit() {
     // let ip : string = location.host;
     // console.log(ip);
-    let toastref = this.toast.info('กำลังประมวลผล', null, {
+    let toastref: any  = this.toast.info('กำลังประมวลผล', null, {
       disableTimeOut: true
     });
     this.alertService.get('listalert.php').subscribe((data: any) => {
@@ -39,14 +39,14 @@ export class ListAlertComponent implements OnInit {
       }
     });
   }
-  goto(list: any) {
+  gotoPage(type: any) {
     // let navigationExtras: NavigationExtras = {
     //   queryParams: {
     //     data: JSON.stringify(list.data)
     //   }
     // };
-    let r: any;
-    switch (parseInt(list.type)) {
+    let r: any = '';
+    switch (type) {
       case 1:
         r = 'borrow';
         break; // เบิกยืม
@@ -56,6 +56,9 @@ export class ListAlertComponent implements OnInit {
       case 3:
         r = 'sendrepair';
         break; // บันทึกเอกสารส่งซ่อม
+      case 4:
+        r = 'sendreturn';
+        break; // บันทึกเอกสารส่งคืน
     }
     console.log(r);
     // this.router.navigate([r], navigationExtras);

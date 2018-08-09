@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    บันทึกรายละเอียดเอกสารส่งซ่อม
+    บันทึกรายละเอียดเอกสารส่งคืนของซ่อม
   </div>
   <div class="card-body">
     <h5 class="card-title">เลขที่เอกสารส่งของ:&nbsp;{{transfer_docno}}</h5>
@@ -49,7 +49,8 @@
             <th>sno</th>
             <th>tagno</th>
             <th>อาการเสีย</th>
-
+            <th>pno(คืน)</th>
+            <th>sno(คืน)</th>
           </tr>
         </thead>
         <tbody>
@@ -59,7 +60,8 @@
             <td>{{d?.send_sno}}</td>
             <td>{{d?.tag_no}}</td>
             <td>{{d?.symptom}}</td>
-            
+            <td>{{d?.ret_pno}}</td>
+            <td>{{d?.ret_sno}}</td>
           </tr>
         </tbody>
       </table>
