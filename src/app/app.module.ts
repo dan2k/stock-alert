@@ -14,6 +14,7 @@ import { SendrepairComponent } from './sendrepair/sendrepair.component';
 import { SendrepairDetailComponent } from './sendrepair-detail/sendrepair-detail.component';
 import { SendreturnComponent } from './sendreturn/sendreturn.component';
 import { SendreturnDetailComponent } from './sendreturn-detail/sendreturn-detail.component';
+import { ReceiverepairComponent } from './receiverepair/receiverepair.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { SendreturnDetailComponent } from './sendreturn-detail/sendreturn-detail
     SendrepairDetailComponent,
     SendreturnComponent,
     SendreturnDetailComponent,
+    ReceiverepairComponent,
 
   ],
   imports: [

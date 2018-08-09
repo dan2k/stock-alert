@@ -59,6 +59,9 @@ export class ListAlertComponent implements OnInit {
       case 4:
         r = 'sendreturn';
         break; // บันทึกเอกสารส่งคืน
+      case 5:
+        r = 'receiverepair';
+        break; // บันทึกรับคืนอุปกรณ์
     }
     console.log(r);
     // this.router.navigate([r], navigationExtras);
