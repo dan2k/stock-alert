@@ -1,3 +1,4 @@
+import { ReceiverepairComponent } from './receiverepair/receiverepair.component';
 import { SendreturnComponent } from './sendreturn/sendreturn.component';
 import { SendrepairComponent } from './sendrepair/sendrepair.component';
 import { NgModule } from '@angular/core';
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'sendrepair', component: SendrepairComponent },
   { path: 'sendrepair-detail/:transfer_docno', component: SendrepairDetailComponent },
   { path: 'sendreturn', component: SendreturnComponent },
-  { path: 'sendreturn-detail/:transfer_docno', component: SendreturnDetailComponent},
+  { path: 'sendreturn-detail/:transfer_docno', component: SendreturnDetailComponent },
+  { path: 'receiverepair', component: ReceiverepairComponent},
   { path: '**', redirectTo: ''}
 
 ];
