@@ -1,0 +1,52 @@
+<div class="alert alert-danger mt-5" role="alert" style="margin-bottom: 0;">
+  <br>
+  <h5 class="pull-right">รายการอุปกรณ์ส่งคืนแต่ยังไม่ได้ทำการรับคืน</h5>
+</div>
+<div class="row" >
+  <div class="col-3">
+    <select class="form-control" (change)="getData(g.value)" #g [hidden]="group.length<2">
+      <option value=''>--เลือก--</option>
+      <option *ngFor="let g of group" [value]="g?.from_stock_id">{{g?.stock_name}}&nbsp;({{g?.co}})</option>
+    </select>
+  </div>
+</div>
+<div class="table-responsive" [hidden]="!isData">
+  <table class="table table-dark table-bordered table-hover table-striped">
+    <thead class="thead-light">
+      <tr>
+        <th>ลำดับที่</th>
+        <th>เอกสารส่งซ่อม</th>
+        <th>tag no</th>
+        <th>pno</th>
+        <th>sno</th>
+        <th>pno(คืน)</th>
+        <th>sno(คืน)</th>
+        <th>วันที่ส่งซ่อม</th>
+        <th>วันที่ส่งคืน</th>
+        <th>ปลายทาง</th>
+        <th>::</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of data ;let i=index;">
+        <td>{{i+1}}</td>
+        <td>{{d?.doc_no}}</td>
+        <td>{{d?.tag_no}}</td>
+        <td>{{d?.pno}}</td>
+        <td>{{d?.sno}}</td>
+        <td>{{d?.ret_pno}}</td>
+        <td>{{d?.ret_sno}}</td>
+        <td>{{d?.send_date1}}</td>
+        <td>{{d?.ret_date1}}</td>
+        <td>{{d?.province_name}}</td>
+        <td>
+          <button class="btn-success btn-sm" (click)="sendmail(d?.ret_docno)">
+            <i class="material-icons">
+              email
+            </i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
