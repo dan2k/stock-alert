@@ -15,6 +15,7 @@ import { SendrepairDetailComponent } from './sendrepair-detail/sendrepair-detail
 import { SendreturnComponent } from './sendreturn/sendreturn.component';
 import { SendreturnDetailComponent } from './sendreturn-detail/sendreturn-detail.component';
 import { ReceiverepairComponent } from './receiverepair/receiverepair.component';
+import { SendreturnButNoReceiveComponent } from './sendreturn-but-no-receive/sendreturn-but-no-receive.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ReceiverepairComponent } from './receiverepair/receiverepair.component'
     SendreturnComponent,
     SendreturnDetailComponent,
     ReceiverepairComponent,
+    SendreturnButNoReceiveComponent,
 
   ],
   imports: [

@@ -1,3 +1,4 @@
+import { SendreturnButNoReceiveComponent } from './sendreturn-but-no-receive/sendreturn-but-no-receive.component';
 import { ReceiverepairComponent } from './receiverepair/receiverepair.component';
 import { SendreturnComponent } from './sendreturn/sendreturn.component';
 import { SendrepairComponent } from './sendrepair/sendrepair.component';
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'sendrepair-detail/:transfer_docno', component: SendrepairDetailComponent },
   { path: 'sendreturn', component: SendreturnComponent },
   { path: 'sendreturn-detail/:transfer_docno', component: SendreturnDetailComponent },
-  { path: 'receiverepair', component: ReceiverepairComponent},
+  { path: 'receiverepair', component: ReceiverepairComponent },
+  { path: 'sendreturn-but-no-receive', component: SendreturnButNoReceiveComponent},
   { path: '**', redirectTo: ''}
 
 ];
