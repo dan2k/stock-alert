@@ -78,13 +78,13 @@ export class BorrowDetailComponent implements OnInit {
       doc_no: data.doc_no,
       stock_id: this.detail['stockid'],
       draw_emp: this.detail['empid'],
-      symptom: symptom,
+      symptom: symptom.value,
       sysno: data.sys_no,
       pno: data.pno,
       sno: data.sno,
-      nsno: nsno,
-      tagno: tagno,
-      typeid: type
+      nsno: nsno.value,
+      tagno: tagno.value,
+      typeid: type.value
      };
      let toastref2 = this.toast.info('กำลังประมวลผลข้อมูล', null, { disableTimeOut: true });
     this.borrowService.sendback(params).subscribe((d: any) => {
@@ -93,7 +93,7 @@ export class BorrowDetailComponent implements OnInit {
       if (dd.toString() === '0') {
         alert('ส่งคืนเรียบร้อยแล้ว');
         this.toast.clear(toastref2.toastId);
-        // this.toast.success('ส่งคืนเรียบร้อยแล้ว', null, { timeOut: 3000 });
+
         this.equip = this.equip.filter(obj => obj !== data);
         if (this.equip.length < 1) {
           this.rout.navigate(['borrow']);
@@ -101,7 +101,6 @@ export class BorrowDetailComponent implements OnInit {
       } else {
         alert(dd.toString());
         this.toast.clear(toastref2.toastId);
-        // this.toast.success('ส่งคืนเรียบร้อยแล้ว', null, { timeOut: 3000 });
       }
     });
 
