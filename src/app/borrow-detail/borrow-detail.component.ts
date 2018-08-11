@@ -93,7 +93,7 @@ export class BorrowDetailComponent implements OnInit {
       if (dd.toString() === '0') {
         alert('ส่งคืนเรียบร้อยแล้ว');
         this.toast.clear(toastref2.toastId);
-        // this.toast.success('ส่งคืนเรียบร้อยแล้ว', null, { timeOut: 3000 });
+
         this.equip = this.equip.filter(obj => obj !== data);
         if (this.equip.length < 1) {
           this.rout.navigate(['borrow']);
@@ -101,7 +101,6 @@ export class BorrowDetailComponent implements OnInit {
       } else {
         alert(dd.toString());
         this.toast.clear(toastref2.toastId);
-        // this.toast.success('ส่งคืนเรียบร้อยแล้ว', null, { timeOut: 3000 });
       }
     });
 
