@@ -78,13 +78,13 @@ export class BorrowDetailComponent implements OnInit {
       doc_no: data.doc_no,
       stock_id: this.detail['stockid'],
       draw_emp: this.detail['empid'],
-      symptom: symptom,
+      symptom: symptom.value,
       sysno: data.sys_no,
       pno: data.pno,
       sno: data.sno,
-      nsno: nsno,
-      tagno: tagno,
-      typeid: type
+      nsno: nsno.value,
+      tagno: tagno.value,
+      typeid: type.value
      };
      let toastref2 = this.toast.info('กำลังประมวลผลข้อมูล', null, { disableTimeOut: true });
     this.borrowService.sendback(params).subscribe((d: any) => {
