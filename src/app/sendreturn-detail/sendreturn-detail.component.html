@@ -36,6 +36,7 @@
         <button class="btn btn-danger btn-sm" (click)="cancel(transferdesc,transfernumber,transfertel,transferpic)">ยกเลิก</button><br>
       </div>
       <img [src]='imgUrl'  class="img-fluid rounded mx-auto d-block" [hidden]="imgUrl===''">
+      <pdf-viewer [src]="pdfUrl" [hidden]="pdfUrl===''"></pdf-viewer>
     </fieldset>
 
 

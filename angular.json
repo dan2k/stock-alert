@@ -33,7 +33,11 @@
               "node_modules/material-design-icons/iconfont/material-icons.css",
               "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "/node_modules/jquery/dist/jquery.min.js",
+              "/node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "/node_modules/poper.js/dist/poper.js"
+            ]
           },
           "configurations": {
             "production": {
