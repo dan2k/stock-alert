@@ -16,7 +16,8 @@ import { SendreturnComponent } from './sendreturn/sendreturn.component';
 import { SendreturnDetailComponent } from './sendreturn-detail/sendreturn-detail.component';
 import { ReceiverepairComponent } from './receiverepair/receiverepair.component';
 import { SendreturnButNoReceiveComponent } from './sendreturn-but-no-receive/sendreturn-but-no-receive.component';
-
+// pdf viewer
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -32,14 +33,14 @@ import { SendreturnButNoReceiveComponent } from './sendreturn-but-no-receive/sen
     SendreturnDetailComponent,
     ReceiverepairComponent,
     SendreturnButNoReceiveComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    PdfViewerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
