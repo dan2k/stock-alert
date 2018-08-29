@@ -13,6 +13,7 @@ export class SendrepairDetailComponent implements OnInit {
   repairs: any;
   detail: any;
   imgUrl: any = '';
+  pdfUrl: any = '';
   constructor(
     private router: ActivatedRoute,
     private sendrepairService: SendrepairService,
@@ -46,16 +47,42 @@ export class SendrepairDetailComponent implements OnInit {
   setImg(event) {
     // console.log(event.target.files[0]);
     if (event.target.files && event.target.files[0]) {
-      let pattern = /image-*/;
-      if (!event.target.files[0].type.match(pattern)) {
-        this.toast.error('ไม่ใช่รูปภาพกรุณา upload รูปภาพเท่านั้น', null, { timeOut: 3000 });
-        this.imgUrl = '';
+      let isPdf: boolean;
+      let isImg: boolean;
+      let patternImg = /image\/*/;
+      let patternPdf = /application\/pdf/;
+      if (!event.target.files[0].type.match(patternImg)) {
+        // this.toast.error('ไม่ใช่รูปภาพกรุณา upload รูปภาพเท่านั้น', null, { timeOut: 3000 });
+         this.imgUrl = '';
+        // return false;
+        isImg = false;
+      } else {
+        isImg = true;
+      }
+      if (!event.target.files[0].type.match(patternPdf)) {
+        // this.toast.error('ไม่ใช่รูปภาพกรุณา upload รูปภาพเท่านั้น', null, { timeOut: 3000 });
+         this.pdfUrl = '';
+        // return false;
+        isPdf = false;
+      } else {
+        isPdf = true;
+      }
+      if (isImg==false && isPdf==false) {
+        this.toast.error('ไม่ใช่รูปภาพกรุณา upload รูปภาพหรือ pdf เท่านั้น', null, { timeOut: 3000 });
         return false;
       }
       let reader = new FileReader();
       reader.onload = (event2: any) => {
-        this.imgUrl = event2.target.result;
-        console.log(this.imgUrl);
+        if (isImg) {
+          this.imgUrl = event2.target.result;
+          this.pdfUrl = '';
+          console.log(this.imgUrl);
+        } else {
+          this.pdfUrl = event2.target.result;
+          this.imgUrl = '';
+          console.log(this.pdfUrl);
+        }
+
       };
       reader.readAsDataURL(event.target.files[0]);
     }
@@ -72,14 +99,24 @@ export class SendrepairDetailComponent implements OnInit {
       transfernumber.focus();
       return false;
     }
-    if (this.imgUrl === '') {
+    if (this.imgUrl === '' && this.pdfUrl==='') {
       alert('กรุณาupload เอกสาร');
       return false;
     }
-    let pattern = /image-*/;
-    if (!transferpic.files[0].type.match(pattern)) {
-      alert('ไม่ใช่ file รูปภาพ');
-      return false;
+    if (this.imgUrl !== '' || this.pdfUrl!=='') {
+      let patternImg = /image\/*/;
+      let patternPdf = /application\/pdf/;
+      if (this.imgUrl !== '') {
+        if (!transferpic.files[0].type.match(patternImg)) {
+          alert('ไม่ใช่ file รูปภาพ');
+          return false;
+        }
+      } else {
+        if (!transferpic.files[0].type.match(patternPdf)) {
+          alert('ไม่ใช่ Pdf รูปภาพ');
+          return false;
+        }
+      }
     }
     let formData = new FormData();
     formData.append('action', 'save');
@@ -106,6 +143,7 @@ export class SendrepairDetailComponent implements OnInit {
     transfertel.value = '';
     transferpic.value = '';
     this.imgUrl = '';
+    this.pdfUrl = '';
 
 
   }
