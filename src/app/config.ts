@@ -3,5 +3,5 @@ export const url: any = `http://${host}/mpsicc/iccServer/stock-alert`;
 export const stockurl = `http://${host}/mpsicc/stock/ajax`;
 export const stockdevurl = `http://${host}/mpsicc/stock-dev/ajax`;
 export const stockdevhome = `http://${host}/mpsicc/stock-dev/`;
-export const stockhome = `http://${host}/mpsicc/stock-dev/`;
+export const stockhome = `http://${host}/mpsicc/stock/`;
 // export const url: any= `/stock-alert`;
