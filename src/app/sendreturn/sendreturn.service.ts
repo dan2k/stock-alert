@@ -21,6 +21,16 @@ export class SendreturnService {
       .set('transfer_docno', transfer_docno);
     return this.http.get(`${url}/sendreturn.php`, { params: params });
   }
+  getContract() {
+    let params = new HttpParams()
+      .set('action', 'getContract');
+    return this.http.get(`${url}/sendreturn.php`, { params: params });
+  }
+  getCompany() {
+    let params = new HttpParams()
+      .set('action', 'getCompany');
+    return this.http.get(`${url}/sendreturn.php`, { params: params });
+  }
   save(formData: any) {
     // let params = new HttpParams();
 

@@ -18,6 +18,9 @@ import { ReceiverepairComponent } from './receiverepair/receiverepair.component'
 import { SendreturnButNoReceiveComponent } from './sendreturn-but-no-receive/sendreturn-but-no-receive.component';
 // pdf viewer
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { SelectModule } from 'ng-select';
+import { NgxCurrencyModule } from "ngx-currency";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     PdfViewerModule,
+    SelectModule,
+    NgxCurrencyModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
