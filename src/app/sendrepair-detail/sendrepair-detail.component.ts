@@ -2,7 +2,12 @@ import { SendrepairService } from './../sendrepair/sendrepair.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
+import { IOption } from "ng-select";
+class MIOption implements IOption {
+  value: string;
+  label: string;
+  pay_flag: string;
+}
 @Component({
   selector: 'app-sendrepair-detail',
   templateUrl: './sendrepair-detail.component.html',
@@ -14,6 +19,13 @@ export class SendrepairDetailComponent implements OnInit {
   detail: any;
   imgUrl: any = '';
   pdfUrl: any = '';
+  contract: string='';
+  myOptions: Array<MIOption>;
+  myOption2: Array<MIOption>;
+  companyid: string='';
+  price: any;
+  pay_flag: any;
+
   constructor(
     private router: ActivatedRoute,
     private sendrepairService: SendrepairService,
@@ -24,7 +36,50 @@ export class SendrepairDetailComponent implements OnInit {
   ngOnInit() {
     this.router.params.subscribe(params => {
       this.transfer_docno = params['transfer_docno'];
+      this.getCompany();
+      this.getContract();
       this.getSendrepair();
+    });
+  }
+  setComid(option:MIOption) {
+    this.companyid = option.value;
+    this.pay_flag=option.pay_flag
+    console.log('companyid=' + this.companyid);
+  }
+  setContract(option: IOption) {
+    this.contract = option.value;
+    console.log('contract=' + this.contract);
+  }
+  getContract() {
+    let toastref = this.toast.info("กำลังประมวลผลข้อมูล", null, {
+      disableTimeOut: true
+    });
+    this.sendrepairService.getContract().subscribe((data: any) => {
+      this.toast.clear(toastref.toastId);
+      if (data.status) {
+        this.toast.success("ดึงข้อมูลเรียบร้อยแล้ว", null, { timeOut: 2000 });
+        console.log(data.data);
+        this.myOptions = data.data;
+      } else {
+        console.log(data);
+        this.toast.error(data.msg, null, { timeOut: 2000 });
+      }
+    });
+  }
+  getCompany() {
+    let toastref = this.toast.info("กำลังประมวลผลข้อมูล", null, {
+      disableTimeOut: true
+    });
+    this.sendrepairService.getCompany().subscribe((data: any) => {
+      this.toast.clear(toastref.toastId);
+      if (data.status) {
+        this.toast.success("ดึงข้อมูลเรียบร้อยแล้ว", null, { timeOut: 2000 });
+        console.log(data.data);
+        this.myOption2 = data.data;
+      } else {
+        console.log(data);
+        this.toast.error(data.msg, null, { timeOut: 2000 });
+      }
     });
   }
   getSendrepair() {
@@ -87,23 +142,48 @@ export class SendrepairDetailComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
     }
   }
-  save(transferdesc: any, transfernumber: any, transfertel: any, transferpic: any) {
+  save(
+    transferdesc: any,
+    transfernumber: any,
+    transfertel: any,
+    transferpic: any,
+    comid: any,
+    transfercontract: any,
+    transferprice: any,
+    transferremark:any
+  ) {
     console.log(transferpic.files[0]);
-    if (transferdesc.value === '') {
-      alert('กรุณาระบุ รายละเอียดการส่ง');
+    if (this.companyid === "") {
+      alert('กรุณาเลือกช่องทางการส่ง');
+      comid.select('');
+      return false;
+    }
+    if (transferdesc.value === "" && this.companyid==="99") {
+      alert("กรุณาระบุ รายละเอียดการส่ง");
       transferdesc.focus();
       return false;
     }
-    if (transfernumber.value === '') {
-      alert('กรุณาระบุ หมายเลขเอกสารการส่ง');
+    console.log(this.price);
+    if ((this.price === 0 || this.price===undefined) && this.pay_flag==='1'  ) {
+      alert("กรุณาระบุ ราคา");
+      transferprice.focus();
+      return false;
+    }
+    if (transfernumber.value === "" ) {
+      alert("กรุณาระบุ หมายเลขเอกสารการส่ง");
       transfernumber.focus();
       return false;
     }
-    if (this.imgUrl === '' && this.pdfUrl==='') {
-      alert('กรุณาupload เอกสาร');
+    if (this.contract === "") {
+      alert("กรุณาระบุ contract no");
+      transfercontract.select('');
       return false;
     }
-    if (this.imgUrl !== '' || this.pdfUrl!=='') {
+    if (this.imgUrl === "" && this.pdfUrl === "" && this.companyid!=='99') {
+      alert("กรุณาupload เอกสาร");
+      return false;
+    }
+    if ((this.imgUrl !== "" || this.pdfUrl !== "") && this.companyid!=='99' ) {
       let patternImg = /image\/*/;
       let patternPdf = /application\/pdf/;
       if (this.imgUrl !== '') {
@@ -120,11 +200,15 @@ export class SendrepairDetailComponent implements OnInit {
     }
     let formData = new FormData();
     formData.append('action', 'save');
-    formData.append('transfer_docno', this.transfer_docno);
-    formData.append('transferdesc', transferdesc.value);
-    formData.append('transfernumber', transfernumber.value);
-    formData.append('transfertel', transfertel.value);
-    formData.append('transferpic', transferpic.files[0]);
+    formData.append("transfer_docno", this.transfer_docno);
+    formData.append("transferdesc", this.companyid==='99'?'':transferdesc.value);
+    formData.append("transfernumber", transfernumber.value);
+    formData.append("transfertel", transfertel.value);
+    formData.append("transferpic", transferpic.files[0]);
+    formData.append("comid", this.companyid);
+    formData.append("transferprice",this.price);
+    formData.append("transfercontract", this.contract);
+    formData.append("transferremark", transferremark.value);
     let toastref = this.toast.info('กำลังประมวลผล', null, { disableTimeOut: true });
     this.sendrepairService.save(formData).subscribe((data: any) => {
       this.toast.clear(toastref.toastId);
@@ -137,14 +221,28 @@ export class SendrepairDetailComponent implements OnInit {
       }
     });
   }
-  cancel(transferdesc: any, transfernumber: any, transfertel: any, transferpic: any) {
+  cancel(
+    transferdesc: any,
+    transfernumber: any,
+    transfertel: any,
+    transferpic: any,
+    comid: any,
+    transfercontract: any,
+    transferprice: any,
+    transferremark:any
+  ) {
     transferdesc.value = '';
     transfernumber.value = '';
     transfertel.value = '';
     transferpic.value = '';
     this.imgUrl = '';
     this.pdfUrl = '';
-
-
+    this.companyid = "";
+    this.contract = "";
+    comid.clear();
+    this.price = '';
+    transfercontract.clear();
+    transferprice.value = '';
+    transferremark.value = '';
   }
 }
