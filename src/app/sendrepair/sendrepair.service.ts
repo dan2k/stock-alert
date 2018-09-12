@@ -15,10 +15,21 @@ export class SendrepairService {
       .set('action', 'getData');
     return this.http.get(`${url}/sendrepair.php`, { params: params });
   }
+
   getSendrepair(transfer_docno: any) {
     let params = new HttpParams()
       .set('action', 'sendrepair')
       .set('transfer_docno', transfer_docno);
+    return this.http.get(`${url}/sendrepair.php`, { params: params });
+  }
+  getContract() {
+    let params = new HttpParams()
+      .set('action', 'getContract');
+    return this.http.get(`${url}/sendrepair.php`, { params: params });
+  }
+  getCompany() {
+    let params = new HttpParams()
+      .set('action', 'getCompany');
     return this.http.get(`${url}/sendrepair.php`, { params: params });
   }
   save(formData: any) {
