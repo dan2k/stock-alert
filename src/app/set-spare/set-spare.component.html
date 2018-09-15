@@ -9,6 +9,10 @@
         <th>ลำดับที่</th>
         <th>pno</th>
         <th>sno</th>
+        <th>เข้ามาจากโปรแกรม</th>
+        <th>จาก</th>
+        <th>โดย</th>
+        <th>วัน/เวลา</th>
         <th>ตู้</th>
         <th>ชั้น</th>
         <th>ช่อง</th>
@@ -21,6 +25,10 @@
         <td>{{i+1}}</td>
         <td>{{d?.pno}}</td>
         <td>{{d?.sno}}</td>
+        <td>{{d?.program}}</td>
+        <td>{{d?.stock_name}}</td>
+        <td>{{d?.by}}</td>
+        <td>{{d?.datetime}}</td>
         <td>
           <select class="form-control form-control-sm" #a1>
             <option value='' > - </option>
