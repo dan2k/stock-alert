@@ -1,3 +1,4 @@
+import { BorrowModule } from './borrow.module';
 import { url, stockurl } from './../config';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
@@ -5,7 +6,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 @Injectable({
-  providedIn: 'root'
+  providedIn: BorrowModule
 })
 export class BorrowService {
 

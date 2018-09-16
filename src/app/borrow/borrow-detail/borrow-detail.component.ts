@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { BorrowService } from '../borrow/borrow.service';
+import { BorrowService } from '../borrow.service';
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-borrow-detail',
@@ -96,7 +96,7 @@ export class BorrowDetailComponent implements OnInit {
 
         this.equip = this.equip.filter(obj => obj !== data);
         if (this.equip.length < 1) {
-          this.rout.navigate(['borrow']);
+          this.rout.navigate(['']);
         }
       } else {
         alert(dd.toString());

@@ -1,7 +1,7 @@
 import { Component, OnInit} from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
-import { SendreturnService } from "../sendreturn/sendreturn.service";
+import { SendreturnService } from "../sendreturn.service";
 import { IOption } from "ng-select";
 class MIOption implements IOption {
   value: string;
@@ -92,7 +92,7 @@ export class SendreturnDetailComponent implements OnInit{
         if (data.status) {
           this.toast.success("ดึงข้อมูลเรียบร้อยแล้ว", null, { timeOut: 2000 });
           if (data.detail.length < 1) {
-            this.rout.navigate([""]);
+            this.rout.navigate(["sendreturn/list"]);
           }
           this.repairs = data.data;
           this.detail = data.detail[0];
@@ -228,7 +228,7 @@ export class SendreturnDetailComponent implements OnInit{
         this.toast.success("บันทึกข้อมูลเรียบร้อยแล้ว", null, {
           timeOut: 2000
         });
-        this.rout.navigate([""]);
+        this.rout.navigate(["sendreturn/list"]);
       } else {
         console.log(data);
         this.toast.error(data.mesg, null, { timeOut: 2000 });

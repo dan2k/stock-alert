@@ -1,34 +1,38 @@
-import { SendreturnButNoReceiveComponent } from './sendreturn-but-no-receive/sendreturn-but-no-receive.component';
-import { ReceiverepairComponent } from './receiverepair/receiverepair.component';
-import { SendreturnComponent } from './sendreturn/sendreturn.component';
-import { SendrepairComponent } from './sendrepair/sendrepair.component';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { ListAlertComponent } from './list-alert/list-alert.component';
-import { BorrowComponent } from './borrow/borrow.component';
-import { SetSpareComponent } from './set-spare/set-spare.component';
-import { BorrowDetailComponent } from './borrow-detail/borrow-detail.component';
-import { SendrepairDetailComponent } from './sendrepair-detail/sendrepair-detail.component';
-import { SendreturnDetailComponent } from './sendreturn-detail/sendreturn-detail.component';
-
-
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 const routes: Routes = [
-  { path: '', component: ListAlertComponent },
-  { path: 'borrow', component: BorrowComponent },
-  { path: 'borrowdetail/:docno/:stockid/:empid/:remark/:thiname/:object/:draw_date/:return_expect', component: BorrowDetailComponent},
-  { path: 'setspare', component: SetSpareComponent },
-  { path: 'sendrepair', component: SendrepairComponent },
-  { path: 'sendrepair-detail/:transfer_docno', component: SendrepairDetailComponent },
-  { path: 'sendreturn', component: SendreturnComponent },
-  { path: 'sendreturn-detail/:transfer_docno', component: SendreturnDetailComponent },
-  { path: 'receiverepair', component: ReceiverepairComponent },
-  { path: 'sendreturn-but-no-receive', component: SendreturnButNoReceiveComponent},
-  { path: '**', redirectTo: ''}
-
+  {
+    path: "listalert",
+    loadChildren: "./list-alert/list-alert.module#ListAlertModule"
+  },
+  {
+    path: "setspare",
+    loadChildren: "./set-spare/set-spare.module#SetSpareModule"
+  },
+  {
+    path: "receiverepair",
+    loadChildren: "./receiverepair/receiverepair.module#ReceiverepairModule"
+  },
+  { path: "borrow", loadChildren: "./borrow/borrow.module#BorrowModule" },
+  {
+    path: "sendrepair",
+    loadChildren: "./sendrepair/sendrepair.module#SendrepairModule"
+  },
+  {
+    path: "sendreturn",
+    loadChildren: "./sendreturn/sendreturn.module#SendreturnModule"
+  },
+  {
+    path: "sendreturn-but-no-receive",
+    loadChildren:
+      "./sendreturn-but-no-receive/sendreturn-but-no-receive.module#SendreturnButNoReceiveModule"
+  },
+  { path: "**", redirectTo: "listalert", pathMatch: "full" },
+  { path: "", redirectTo: "listalert", pathMatch: "full" }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SendrepairService } from './sendrepair.service';
+import { SendrepairService } from '../sendrepair.service';
 import { ToastrService } from 'ngx-toastr';
 import {  Router } from '@angular/router';
 
@@ -39,7 +39,7 @@ export class SendrepairComponent implements OnInit {
   }
   detail(data) {
     console.log(data);
-    this.router.navigate(['sendrepair-detail', data.transfer_docno]);
+    this.router.navigate(['sendrepair/detail', data.transfer_docno]);
   }
 
 }

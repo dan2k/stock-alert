@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import {  Router } from '@angular/router';
-import { SendreturnService } from './sendreturn.service';
+import { SendreturnService } from '../sendreturn.service';
 @Component({
   selector: 'app-sendreturn',
   templateUrl: './sendreturn.component.html',
@@ -38,7 +38,7 @@ export class SendreturnComponent implements OnInit {
   }
   detail(data) {
     console.log(data);
-    this.router.navigate(['sendreturn-detail', data.transfer_docno]);
+    this.router.navigate(['sendreturn/detail', data.transfer_docno]);
   }
 
 }

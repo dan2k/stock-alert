@@ -1,13 +1,14 @@
+import { ListAlertModule } from './list-alert.module';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {url} from '../app/config';
+import {url} from '../config';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 @Injectable({
-  providedIn: 'root'
+  providedIn: ListAlertModule
 })
-export class AlertService {
+export class ListAlertService {
    // url: any = 'http://www.controldata.co.th/mpsicc/iccServer/stock-alert';
    // url: any = '/stock-alert';
   constructor(private http: HttpClient) {
