@@ -1,9 +1,10 @@
 import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { url } from '../config';
+import { SendrepairModule } from './sendrepair.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: SendrepairModule
 })
 export class SendrepairService {
 

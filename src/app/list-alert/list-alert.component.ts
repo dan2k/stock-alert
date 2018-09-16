@@ -1,5 +1,5 @@
+ import { ListAlertService } from './list-alert.service';
 import { Component, OnInit } from '@angular/core';
-import { AlertService } from '../alert.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,11 +11,10 @@ import { ToastrService } from 'ngx-toastr';
 export class ListAlertComponent implements OnInit {
   list: any;
   constructor(
-    private alertService: AlertService,
+    private alertService: ListAlertService,
     private router: Router,
     private toast: ToastrService
   ) {}
-
   ngOnInit() {
     // let ip : string = location.host;
     // console.log(ip);

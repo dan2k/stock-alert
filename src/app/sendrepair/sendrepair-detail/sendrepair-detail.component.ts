@@ -1,4 +1,4 @@
-import { SendrepairService } from './../sendrepair/sendrepair.service';
+import { SendrepairService } from '../sendrepair.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -8,6 +8,7 @@ class MIOption implements IOption {
   label: string;
   pay_flag: string;
 }
+
 @Component({
   selector: 'app-sendrepair-detail',
   templateUrl: './sendrepair-detail.component.html',
@@ -89,7 +90,7 @@ export class SendrepairDetailComponent implements OnInit {
       if (data.status) {
         this.toast.success('ดึงข้อมูลเรียบร้อยแล้ว', null, { timeOut: 2000 });
         if (data.detail.length < 1) {
-          this.rout.navigate(['']);
+          this.rout.navigate(['sendrepair/list']);
         }
         this.repairs = data.data;
         this.detail = data.detail[0];
@@ -214,7 +215,7 @@ export class SendrepairDetailComponent implements OnInit {
       this.toast.clear(toastref.toastId);
       if (data.status) {
         this.toast.success('บันทึกข้อมูลเรียบร้อยแล้ว', null, { timeOut: 2000 });
-        this.rout.navigate(['']);
+        this.rout.navigate(['sendrepair/list']);
       } else {
         console.log(data);
         this.toast.error(data.mesg, null, { timeOut: 2000 });
