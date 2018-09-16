@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { BorrowService } from './borrow.service';
+import { BorrowService } from '../borrow.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -43,8 +43,9 @@ export class BorrowComponent implements OnInit {
     });
   }
   detail(data: any) {
+    console.log(location.href);
     this.rout.navigate([
-      'borrowdetail',
+      'borrow/detail',
       data.doc_no,
       data.stock_id,
       data.draw_emp,

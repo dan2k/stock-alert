@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { url,stockurl,stockdevurl,stockdevhome, stockhome } from '../config';
+import { url,stockurl, stockhome } from '../config';
+import { SendreturnButNoReceiveModule } from './sendreturn-but-no-receive.module';
 @Injectable({
-  providedIn: 'root'
+  providedIn: SendreturnButNoReceiveModule
 })
 export class SendreturnButNoReceiveService {
   // stockhome: string = stockdevhome;

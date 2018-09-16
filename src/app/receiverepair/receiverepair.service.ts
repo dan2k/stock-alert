@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { stockurl,stockdevurl,stockdevhome, stockhome } from '../config';
+import { stockurl, stockhome } from '../config';
+import { ReceiverepairModule } from './receiverepair.module';
 @Injectable({
-  providedIn: 'root'
+  providedIn: ReceiverepairModule
 })
 export class ReceiverepairService {
   // stockurl: string = stockdevurl;

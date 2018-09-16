@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import {url} from '../app/config';
+import {url} from '../../app/config';
+import { SetSpareModule } from './set-spare.module';
 @Injectable({
-  providedIn: 'root'
+  providedIn: SetSpareModule
 })
 export class SetspareService {
   //url: any = 'http://www.controldata.co.th/mpsicc/iccServer/stock-alert';
