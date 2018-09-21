@@ -38,35 +38,38 @@ export class ListAlertComponent implements OnInit {
       }
     });
   }
-  gotoPage(type: any) {
+  gotoPage(link: any) {
     // let navigationExtras: NavigationExtras = {
     //   queryParams: {
     //     data: JSON.stringify(list.data)
     //   }
     // };
-    let r: any = '';
-    switch (type) {
-      case 1:
-        r = 'borrow';
-        break; // เบิกยืม
-      case 2:
-        r = 'setspare';
-        break; // จัด set
-      case 3:
-        r = 'sendrepair';
-        break; // บันทึกเอกสารส่งซ่อม
-      case 4:
-        r = 'sendreturn';
-        break; // บันทึกเอกสารส่งคืน
-      case 5:
-        r = 'receiverepair';
-        break; // บันทึกรับคืนอุปกรณ์
-      case 6:
-        r = 'sendreturn-but-no-receive';
-        break; // รายการอุปกรณ์ส่งคืนแต่ยังไม่ได้ทำการรับคืน
-    }
-    console.log(r);
+    // let r: any = '';
+    // switch (type) {
+    //   case 1:
+    //     r = 'borrow';
+    //     break; // เบิกยืม
+    //   case 2:
+    //     r = 'setspare';
+    //     break; // จัด set
+    //   case 3:
+    //     r = 'sendrepair';
+    //     break; // บันทึกเอกสารส่งซ่อม
+    //   case 4:
+    //     r = 'sendreturn';
+    //     break; // บันทึกเอกสารส่งคืน
+    //   case 5:
+    //     r = 'receiverepair';
+    //     break; // บันทึกรับคืนอุปกรณ์
+    //   case 6:
+    //     r = 'sendreturn-but-no-receive';
+    //     break; // รายการอุปกรณ์ส่งคืนแต่ยังไม่ได้ทำการรับคืน
+    //   case 7:
+    //     r = 'sendrepair-but-no-receive';
+    //     break; // รายการอุปกรณ์ส่งซ่อมที่ปลายทางยังไม่บันทึกรับซ่อม
+    // }
+    // console.log(r);
     // this.router.navigate([r], navigationExtras);
-    this.router.navigate([r]);
+    this.router.navigate([link]);
   }
 }

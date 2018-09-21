@@ -13,6 +13,9 @@ import { ReceiverepairModule } from './receiverepair/receiverepair.module';
 import { SendrepairModule } from './sendrepair/sendrepair.module';
 import { SendreturnButNoReceiveModule } from './sendreturn-but-no-receive/sendreturn-but-no-receive.module';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SendrepairButNoReceiveModule } from './sendrepair-but-no-receive/sendrepair-but-no-receive.module';
+
+
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     ReceiverepairModule,
     SendrepairModule,
     SendreturnModule,
-    SendreturnButNoReceiveModule
+    SendreturnButNoReceiveModule,
+    SendrepairButNoReceiveModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let d of list ;let i=index;" (click)="gotoPage(d?.type)">
+      <tr *ngFor="let d of list ;let i=index;" (click)="gotoPage(d?.urlx)">
         <td>{{i+1}}</td>
         <td>{{d?.desc}}</td>
         <td>{{d?.amount}}</td>
