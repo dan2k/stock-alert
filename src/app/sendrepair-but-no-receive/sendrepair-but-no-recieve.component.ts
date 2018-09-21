@@ -55,6 +55,11 @@ export class SendrepairButNoRecieveComponent implements OnInit {
     this.tagno = data.tag_no;
     this.sendmail_seq = data.sendmail_seq;
     this.sendmail_priority = data.sendmail_priority;
+    let sendmail_date:any = this.date_diff_indays(data.sendmail_datetime, data.datetime_now);
+    if ( parseInt(sendmail_date)<10 && data.sendmail_seq!=='0') {
+      alert('คุณส่งเมล์แจ้งเตือนครั้งที่ '+data.sendmail_seq+' ไปแล้วเป็นเวลา '+sendmail_date+' วัน '+'\n\r'+' คุณต้องรออีก'+(10-parseInt(sendmail_date))+' วันจึงจะสามารถส่งเมล์ใหม่ได้');
+      return false;
+    }
     if (this.sendmail_seq < 1) {
       $('#alert').modal('show');
     } else {
@@ -79,4 +84,9 @@ export class SendrepairButNoRecieveComponent implements OnInit {
       }
      });
   }
+  date_diff_indays(date1:any , date2:any) {
+		let dt1 = new Date(date1);
+		let dt2 = new Date(date2);
+		return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate()) ) /(1000 * 60 * 60 * 24));
+	}
 }
