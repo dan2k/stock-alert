@@ -27,6 +27,11 @@ const routes: Routes = [
     loadChildren:
       "./sendreturn-but-no-receive/sendreturn-but-no-receive.module#SendreturnButNoReceiveModule"
   },
+  {
+    path: "sendrepair-but-no-receive",
+    loadChildren:
+      "./sendrepair-but-no-receive/sendrepair-but-no-receive.module#SendrepairButNoReceiveModule"
+  },
   { path: "**", redirectTo: "listalert", pathMatch: "full" },
   { path: "", redirectTo: "listalert", pathMatch: "full" }
 ];
