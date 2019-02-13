@@ -11,15 +11,17 @@
           <th>ผู้เบิก</th>
           <th>วันที่เบิก</th>
           <th>วันที่ครบกำหนด</th>
+          <th>::</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let d of data ;let i=index;" (click)="detail(d)">
+        <tr *ngFor="let d of data ;let i=index;" >
           <td>{{i+1}}</td>
-          <td>{{d?.doc_no}}</td>
+          <td (click)="detail(d)" style="cursor:pointer;">{{d?.doc_no}}</td>
           <td>{{d?.thiname}}</td>
           <td>{{d?.draw_date1}}</td>
           <td>{{d?.return_expect1}}</td>
+          <td><button class="btn btn-success btn-sm" (click)="borrowContinue(d)">ยืมต่อ</button></td>
         </tr>
       </tbody>
     </table>
