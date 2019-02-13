@@ -56,5 +56,27 @@ export class BorrowComponent implements OnInit {
       data.return_expect1
     ]);
   }
+  borrowContinue(datax: any) {
+    if (!confirm('ต้องการยืมต่อหรือไม่')) {
+      return false;
+    }
+    let toastref: any = this.toast.info('กำลังประมวลผลข้อมูล', null, { disableTimeOut: true });
+    this.borrowService.borrowContinue(datax).subscribe((data: any) => {
+      if (data.status) {
+        this.toast.clear(toastref.toastId);
+        this.toast.success('ส่งรายการเรียบร้อยแล้ว', null, { timeOut: 3000 });
+        this.sendmail(data.docno);
+        this.getData();
+      } else {
+        this.toast.clear(toastref.toastId);
+        this.toast.error(data.msg, null, { timeOut: 3000 });
+      }
+    });
+  }
+  sendmail(doc_no) {
+    this.borrowService.sendmail(doc_no).subscribe((data: any) => {
+      console.log(data);
+    });
+  }
 
 }

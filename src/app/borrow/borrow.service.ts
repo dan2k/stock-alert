@@ -1,5 +1,5 @@
 import { BorrowModule } from './borrow.module';
-import { url, stockurl } from './../config';
+import { url, stockurl,stockhome } from './../config';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 const httpOptions = {
@@ -40,10 +40,24 @@ export class BorrowService {
       .set('typeid', data.typeid);
     return this.http.get(`${stockurl}/spare/apply_spare.php`, { params: params });
   }
+  borrowContinue(data:any) {
+    let params = new HttpParams()
+      .set('action', 'borrow_continue')
+      .set('doc_no', data.doc_no)
+      .set('stock_id', data.stock_id)
+      .set('draw_emp', data.draw_emp);
+    return this.http.get(`${stockurl}/spare/apply_spare.php`, { params: params });
+  }
   cktag(tagno) {
     let params = new HttpParams()
       .set('action', 'cktag')
       .set('tag_no', tagno);
     return this.http.get(`${stockurl}/spare/apply_spare.php`, { params: params });
+  }
+  sendmail(docno:any) {
+    let params = new HttpParams()
+      .set('action', 'drawborrow')
+      .set('doc_no', docno)
+    return this.http.get(`${stockhome}/ajax/sendmail/sendmail.php`, { params: params });
   }
 }
